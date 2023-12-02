@@ -8,31 +8,14 @@
         "type": "tabs",
         "children": [
           {
-            "id": "654daf09d9c9c4da",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "id/draft-memahami-fsm-dan-membuat-fsm-dengan-xstate.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "81c73c07e21321a8",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "id/draft-memahami-fsm-dan-membuat-fsm-dengan-xstate.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "id/draft-memahami-fsm-dan-membuat-fsm-dengan-xstate.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "id/draft-memahami-fsm-dan-membuat-fsm-dengan-xstate.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "id/draft-memahami-fsm-dan-membuat-fsm-dengan-xstate.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -161,8 +140,9 @@
   },
   "active": "81c73c07e21321a8",
   "lastOpenFiles": [
-    "en/2023-11-26-testing-xstate-fsm-with-jest-en.md",
     "id/draft-memahami-fsm-dan-membuat-fsm-dengan-xstate.md",
+    "id/2023-12-03-memahami-fsm-dan-membuat-fsm-dengan-xstate.md",
+    "en/2023-11-26-testing-xstate-fsm-with-jest-en.md",
     "id/2023-11-26-testing-xstate-fsm-with-jest-id.md",
     "en/Untitled.md",
     "2023-11-26.md"
