@@ -396,7 +396,6 @@ UI kita sudah selesai dan sekarang kita ingin bisa mngirim `event` ke `actor` ya
 ```tsx
 export function Fan() {
   // ...
-
   return (
     <div className="flex flex-col items-stretch py-3 px-4 bg-gray-200 rounded-lg gap-5">
       {/* ... */}
