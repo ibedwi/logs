@@ -1,11 +1,11 @@
+> **NOTE:**
+> Ketika tulisan ini dibuat, saya masih menggunakan XState versi 4. Saya mungkin akan menuliskan perubahan atau perbedaan antara XState versi 4 dan 5. Tapi pada dasarnya, konsep yang digunakan sama.
 
-**NOTE:**
-Ketika tulisan ini dibuat, saya masih menggunakan XState versi 4. Saya mungkin akan menuliskan perubahan atau perbedaan antara XState versi 4 dan 5. Tapi pada dasarnya, konsep yang digunakan sama.
+Di tulisan ini, saya ingin berbagi tentang _finite state machine_ dan bagaimana membuat FSM dengan XState. Saya juga membagikan hasil akhir dari project yang ada di tulisan ini di [link berikut](https://github.com/ibedwi/logs-fsm-with-xstate/tree/2023.12.03).
 
-Di tulisan ini, saya ingin berbagi tentang *finite state machine* dan bagaimana membuat FSM dengan XState.
 ## Menyiapkan project
 
-Saya menggunakan Next.js 13 dengan app directory dan TailwindCSS. Libraries yang perlu di-install. Tutorial membuat project Next.js dengan app router dapat ditemukan [di link ini](https://nextjs.org/docs/getting-started/installation).
+Saya menggunakan Next.js 13 dengan app _directory_ dan TailwindCSS. Libraries yang perlu di-_install_. Tutorial membuat project Next.js dengan _app router_ dapat ditemukan [di link ini](https://nextjs.org/docs/getting-started/installation).
 
 ```
 What is your project named? logs-understanding-fsm-with-xstate
@@ -18,11 +18,11 @@ Would you like to customize the default import alias (@/*)? Yes
 What import alias would you like configured? @/*
 ```
 
-*Libraries* lain yang dibutuhkan akan saya jelaskan pada subbab terkait.
+_Libraries_ lain yang dibutuhkan akan saya jelaskan pada subbab terkait.
 
 ## Apa itu Finite State Machine?
 
-Apa itu *finite state machine*? Cara saya memahami istilah ini adalah dengan mencoba membedah dan memahami tiap kata yang ada dalam istilah ini:
+Apa itu _finite state machine_? Cara saya memahami istilah ini adalah dengan mencoba membedah dan memahami tiap kata yang ada dalam istilah ini:
 
 **Machine**
 Machine di sini merujuk kepada “a model of a system”. Model sendiri bisa diartikan sebagai sebuah representasi yang informatif dari sesuatu (yaa intinya representasi dari sistem).
@@ -32,7 +32,7 @@ State di sini merujuk kepada informasi. Lebih spesifik lagi, informasi yang dima
 
 Jika dua kata ini digabungkan, “state machine” dapat dipahami sebagai representasi dari _behavior_ sebuah system. Sebuah state machine, tentunya terdiri dari daftar tingkah lakunya. State machine juga mendeskripsikan transisi dari satu state ke state lain. Transisi ini dipicu oleh _input_ yang diberikan kepada state machine tersebut.
 
-Kata terakhir, “*finite*”, memiliki makna bahwa *state* yang ada di dalam *state machine* jumlahnya terbatas.
+Kata terakhir, “_finite_”, memiliki makna bahwa _state_ yang ada di dalam _state machine_ jumlahnya terbatas.
 
 ## Memodelkan finite state machine kipas angin
 
@@ -40,7 +40,7 @@ Berhubung cuaca di tempat saya tinggal saat menulis tulisan ini sedang panas, ma
 
 ### Memasang XState
 
-Sebelum mulai memodelkan FSM kipas angin, kita harus meng-*install* beberapa *libraries* yang berkaitan dengan *finite state machine* terlebih dahulu:
+Sebelum mulai memodelkan FSM kipas angin, kita harus meng-_install_ beberapa _libraries_ yang berkaitan dengan _finite state machine_ terlebih dahulu:
 
 ```bash
 yarn add xstate@^4.38.1 @xstate/react@^3.2.2
@@ -48,7 +48,7 @@ yarn add xstate@^4.38.1 @xstate/react@^3.2.2
 
 ### VSCode Extension
 
-Untuk kemudahan *development*, saya menggunakan [*extension* Stately di VSCode](https://marketplace.visualstudio.com/items?itemName=statelyai.stately-vscode). *Extension* ini sangat memudahkan dalam memodelkan FSM karena menggunakan GUI.
+Untuk kemudahan _development_, saya menggunakan [_extension_ Stately di VSCode](https://marketplace.visualstudio.com/items?itemName=statelyai.stately-vscode). _Extension_ ini sangat memudahkan dalam memodelkan FSM karena menggunakan GUI.
 
 ### Pemodelan FSM kipas angin
 
@@ -61,7 +61,7 @@ export const fanMachine = createMachine({
 });
 ```
 
-Property `id` digunakan untuk mengidentifikasi mesin yang kita buat.
+_Property_ `id` digunakan untuk mengidentifikasi mesin yang kita buat.
 
 Untuk memodelkan bagaimana sebuah kipas angin bekerja, kita bisa mulai dengan pertanyaan: “apa saja `state` dari sebuah kipas angin?”. Mudah, `stop` dan `spin`. `stop` artinya kipas angin kita tidak berputar, sedangkan `spin` artinya berputar. Intinya ada keadaan ketika kipas angin menyala dan mati. Kita bisa menuliskan `state` dari kipas angin ini ke dalam definisi machine kita sebagai berikut:
 
@@ -80,17 +80,17 @@ export const fanMachine = createMachine({
 });
 ```
 
-*Property* `states` adalah daftar `state` apa saja yang dimiliki oleh *machine* kita dan *property* `initial` menentukan `state` awal saat *machine* pertama kali dijalankan.
+_Property_ `states` adalah daftar `state` apa saja yang dimiliki oleh _machine_ kita dan _property_ `initial` menentukan `state` awal saat _machine_ pertama kali dijalankan.
 
-Sekarang, *machine* kita sudah punya `state`. Tapi, kita belum menentukan bagaimana machine kita bisa berpindah dari `state` `stop` ke `spin`.
+Sekarang, _machine_ kita sudah punya `state`. Tapi, kita belum menentukan bagaimana _machine_ kita bisa berpindah dari `state` `stop` ke `spin`.
 
 ---
 
 ### (Tips) Typescript support (you can skip this part if you’re not using TypeScript)
 
-Jika kamu juga menggunakan TypeScript, XState menyediakan *types generator* (typegen) dari *machine* kita. Berdasarkan [dokumentasi ini](https://xstate.js.org/docs/guides/typescript.html#typegen), pengguna VSCode hanya perlu meng-*install* sebuah *extension*.
+Jika kamu juga menggunakan TypeScript, XState menyediakan _types generator_ (typegen) dari _machine_ kita. Berdasarkan [dokumentasi ini](https://xstate.js.org/docs/guides/typescript.html#typegen), pengguna VSCode hanya perlu meng-_install_ sebuah _extension_.
 
-Lalu di dalam definisi *state machine* kita, kita hanya perlu menambahkan *property* `tsTypes: {}`. Ketika kita menyimpan *file* tersebut, *typings* dari *state machine* kita akan otomatis terbuat.
+Lalu di dalam definisi _state machine_ kita, kita hanya perlu menambahkan _property_ `tsTypes: {}`. Ketika kita menyimpan _file_ tersebut, _typings_ dari _state machine_ kita akan otomatis terbuat.
 
 ---
 
@@ -98,7 +98,7 @@ Lalu di dalam definisi *state machine* kita, kita hanya perlu menambahkan *prope
 
 Dalam XState, transisi dari sebuah `state` ke `state` lain dipicu oleh sebuah `event`. `event` di sini sepadan dengan “input” yang kita singgung pada bagian pengertian FSM di atas.
 
-Untuk kasus kita, transisi yang kita butuhkan untuk berpindah adalah transisi state `stop` ke `spin` dan sebaliknya. Transisi ini dipicu oleh user yang menyalakan atau mematikan kipas angin. Dalam XState, kita bisa menulis transisi ini pada *property* `on` dari sebuah `state`:
+Untuk kasus kita, transisi yang kita butuhkan untuk berpindah adalah transisi state `stop` ke `spin` dan sebaliknya. Transisi ini dipicu oleh _user_ yang menyalakan atau mematikan kipas angin. Dalam XState, kita bisa menulis transisi ini pada _property_ `on` dari sebuah `state`:
 
 ```ts
 export const fanMachine = createMachine({
@@ -124,9 +124,9 @@ export const fanMachine = createMachine({
 
 Kurang lebih, transisi pada `state` `stop` bisa dibaca: “Ketika `USER.PRESS.ON`, transisi ke `spin`”.
 
-Yang menarik dari XState, kita bisa menggunakan nilai string apa saja sebagai nama nilai `EVENT`. Di sini saya menggunakan *convention* nama aksi yang ditulis dalam *uppercase* dan tiap kata dipisahkan oleh titik alih-alih oleh spasi.
+Yang menarik dari XState, kita bisa menggunakan nilai string apa saja sebagai nama nilai `EVENT`. Di sini saya menggunakan _convention_ nama aksi yang ditulis dalam _uppercase_ dan tiap kata dipisahkan oleh titik alih-alih oleh spasi.
 
-Untuk menghasilkan *generated typings* yang lebih baik, kita bisa menuliskan `EVENT` apa saja yang dikenali oleh machine kita. Misalnya:
+Untuk menghasilkan _generated typings_ yang lebih baik, kita bisa menuliskan `EVENT` apa saja yang dikenali oleh machine kita. Misalnya:
 
 ```ts
 type MachineEvent = { type: "USER.PRESS.ON" } | { type: "USER.PRESS.OFF" };
@@ -186,7 +186,7 @@ Sejauh ini, kita sudah menambahkan kecepatan kipas, `fanSpeed` , ke dalam `machi
 
 Untuk merubah nilai dari `context`, kita bisa memanfaatkan salah satu fitur dari XState, yaitu `action`.
 
-Di XState, `action` adalah salah satu bentuk *side-effect* yang bisa di-*trigger*. Kapan `action` ke-*trigger*? `action` bisa di-*trigger* ketika perpindahan `state`, yaitu ketika masuk atau keluar `state`, atau di-*trigger* oleh `event`. `action` dalam XState adalah *pure function*; umumnya bersifat _synchronous_. Kita bisa menggunakan `action` untuk merubah nilai dari `context`.
+Di XState, `action` adalah salah satu bentuk _side-effect_ yang bisa di-_trigger_. Kapan `action` ke-_trigger_? `action` bisa di-_trigger_ ketika perpindahan `state`, yaitu ketika masuk atau keluar `state`, atau di-_trigger_ oleh `event`. `action` dalam XState adalah _pure function_; umumnya bersifat _synchronous_. Kita bisa menggunakan `action` untuk merubah nilai dari `context`.
 
 #### Menambahkan `action` pada `event`
 
@@ -225,88 +225,101 @@ export const fanMachine = createMachine({
 
 Langkah selanjutnya adalah menuliskan implementasi dari `action` `changeFanSpeed`.
 
-Berdasarkan dokumentasinya, fungsi `createMachine` menerima 2 argumen, yang pertama adalah konfigurasi `machine` dan yang kedua adalah `options`. Salah satu *property* dari `options` adalah `actions`, tempat di mana kita menuliskan implementasi dari actions. Hampir setiap property yang ada di `options` — entah itu `guards`, `actions`, atau `services` — yang berbentuk fungsi, akan menerima 2 argumen secara berurutan yaitu `context` saat `action` tersebut di-trigger dan `event` yang men-*trigger* `action` tersebut. Kita dapat menuliskan `action` `changeFanSpeed` seperti ini:
+Berdasarkan dokumentasinya, fungsi `createMachine` menerima 2 argumen, yang pertama adalah konfigurasi `machine` dan yang kedua adalah `options`. Salah satu _property_ dari `options` adalah `actions`, tempat di mana kita menuliskan implementasi dari actions. Hampir setiap property yang ada di `options` — entah itu `guards`, `actions`, atau `services` — yang berbentuk fungsi, akan menerima 2 argumen secara berurutan yaitu `context` saat `action` tersebut di-trigger dan `event` yang men-_trigger_ `action` tersebut. Kita dapat menuliskan `action` `changeFanSpeed` seperti ini:
 
 ```ts
-export const fanMachine = createMachine({
-  // ...
-}, {
-  actions: {
-    changeFanSpeed: (_context, event) => {
-      /* implementation goes here */
-    }
+export const fanMachine = createMachine(
+  {
+    // ...
+  },
+  {
+    actions: {
+      changeFanSpeed: (_context, event) => {
+        /* implementation goes here */
+      },
+    },
   }
-});
+);
 ```
 
 Tetapi, untuk merubah `context`, kita butuh _built-in_ `action` dari XState yang disebut “assign action”. Sederhananya, _assign action_ ini adalah fungsi yang menerima nilai baru yang akan diterapkan ke `context` dan akan menetapkan nilai tersebut ke dalam `context`. Jika nilai dari `context` terbaru yang kita inginkan adalah hasil dari `action` , kita cukup membungkus `action` tersebut ke menggunakan fungsi `assign`.
 
 ```ts
-import { assign } from 'xstate';
+import { assign } from "xstate";
 
-export const fanMachine = createMachine({
-  // ...
-}, {
-  actions: {
-    changeFanSpeed: assign((_context, event) => {
-      /* implementation goes here */
-    })
+export const fanMachine = createMachine(
+  {
+    // ...
+  },
+  {
+    actions: {
+      changeFanSpeed: assign((_context, event) => {
+        /* implementation goes here */
+      }),
+    },
   }
-});
+);
 ```
 
-Misal, nilai `fanSpeed` ketika kipas angin pertama kali dinyalakan adalah `1`. Kita bisa menuliskan *assign action* `changeFanSpeed` seperti ini:
+Misal, nilai `fanSpeed` ketika kipas angin pertama kali dinyalakan adalah `1`. Kita bisa menuliskan _assign action_ `changeFanSpeed` seperti ini:
 
 ```ts
-export const fanMachine = createMachine({
-  id: "fan",
-  // ...
-  states: {
-    stop: {
-      on: {
-        "USER.PRESS.ON": {
-          target: "spin",
-          actions: "changeFanSpeed",
+export const fanMachine = createMachine(
+  {
+    id: "fan",
+    // ...
+    states: {
+      stop: {
+        on: {
+          "USER.PRESS.ON": {
+            target: "spin",
+            actions: "changeFanSpeed",
+          },
         },
       },
-    },
 
-    spin: {
-      on: {
-        "USER.PRESS.OFF": {
-          target: "stop",
-          actions: "changeFanSpeed",
+      spin: {
+        on: {
+          "USER.PRESS.OFF": {
+            target: "stop",
+            actions: "changeFanSpeed",
+          },
         },
       },
     },
+    // ...
   },
-  // ...
-}, {
-  actions: {
-    changeFanSpeed: assign((_context, event) => {
-      if (event.type === "USER.PRESS.ON") {
-        return {
-          fanSpeed: 1,
+  {
+    actions: {
+      changeFanSpeed: assign((_context, event) => {
+        if (event.type === "USER.PRESS.ON") {
+          return {
+            fanSpeed: 1,
+          };
         }
-      }
-      if (event.type === "USER.PRESS.OFF") {
-        return {
-          fanSpeed: 0,
+        if (event.type === "USER.PRESS.OFF") {
+          return {
+            fanSpeed: 0,
+          };
         }
-      }
-      return {}
-    })
+        return {};
+      }),
+    },
   }
-});
+);
 ```
 
 Sekarang, kita sudah memilki FSM kipas angin!
 
 Selanjutnya, salah satu bagian yang tak kalah seru: mengintegrasikan FSM yang sudah kita buat ke UI!
 
+Jika kamu juga menggunakan _extension_ VSCode, FSM kita saat ini kurang lebih terlihat seperti ini:
+
+![FSM with XState Result](../attachments/2023-12-03-fsm-with-xstate-result.png)
+
 ## Mengintegrasikan state machine ke UI
 
-Sebelum melanjutkan, kita perlu meng-*install* beberapa *libraries* terlebih dahulu:
+Sebelum melanjutkan, kita perlu meng-_install_ beberapa _libraries_ terlebih dahulu:
 
 ```bash
 yarn add framer-motion@^10.16.12 react-icons@^4.12.0
@@ -318,7 +331,7 @@ Pertama-tama, mari kita buat sebuah _component_ bernama `Fan.tsx.` _Component_ i
 
 Dalam XState, `machine` yang sudah kita definisikan, `fanMachine` , bisa dianggap sebagai definisi dari sebuah proses. Sedangkan proses yang berjalan berdasarkan definisi yang sudah kita buat disebut sebagian `service` atau `actor`. Beberapa waktu terakhir, saya rasa istilah `actor` lebih sering digunakan.
 
-XState menyediakan *hook* bernama `useMachine` untuk membuat `actor` (proses) dari machine yang sudah kita definisikan. *Hook* ini mengembalikan *tuple*, yang berisi informasi dari `actor` yang sedang berjalan dalam bentuk `object`, fungsi untuk mengirim `event` ke `actor`, dan referensi ke `actor` yang sudah dibuat. Selain itu, *hook* ini juga mengikat `actor` ke dalam *lifecycle* dari *component*. Jadi ketika *component* di-_unmount_, `actor` akan berhenti dan akan mulai dari awal lagi (dari initial state) ketika component di-_mount_.
+XState menyediakan _hook_ bernama `useMachine` untuk membuat `actor` (proses) dari machine yang sudah kita definisikan. _Hook_ ini mengembalikan _tuple_, yang berisi informasi dari `actor` yang sedang berjalan dalam bentuk `object`, fungsi untuk mengirim `event` ke `actor`, dan referensi ke `actor` yang sudah dibuat. Selain itu, _hook_ ini juga mengikat `actor` ke dalam _lifecycle_ dari _component_. Jadi ketika _component_ di-_unmount_, `actor` akan berhenti dan akan mulai dari awal lagi (dari initial state) ketika component di-_mount_.
 
 ```tsx
 export function Fan() {
@@ -327,15 +340,11 @@ export function Fan() {
   const isOn = fsmState.matches("spin");
   const speed = fsmState.context.fanSpeed;
 
-  return (
-    <div>
-      {/* ... */}
-    </div>
-  );
+  return <div>{/* ... */}</div>;
 }
 ```
 
-`isOn` menyimpan hasil dari _method_ `matches`. *Method* ini digunakan untuk memastikan apakah`state` dari `actor` saat ini sesuai dengan argumen yang diberikan. Sedangkan untuk mengakses `context`, kita bisa menggunakan property `context` dari informasi yang kita dapatkan dari *tuple* yang dikembalikan oleh hook `useMachine`, `fsmState`.
+`isOn` menyimpan hasil dari _method_ `matches`. _Method_ ini digunakan untuk memastikan apakah`state` dari `actor` saat ini sesuai dengan argumen yang diberikan. Sedangkan untuk mengakses `context`, kita bisa menggunakan property `context` dari informasi yang kita dapatkan dari _tuple_ yang dikembalikan oleh hook `useMachine`, `fsmState`.
 
 ### Membuat UI
 
@@ -387,7 +396,7 @@ UI kita sudah selesai dan sekarang kita ingin bisa mngirim `event` ke `actor` ya
 ```tsx
 export function Fan() {
   // ...
- 
+
   return (
     <div className="flex flex-col items-stretch py-3 px-4 bg-gray-200 rounded-lg gap-5">
       {/* ... */}
@@ -444,16 +453,16 @@ export function Fan() {
 }
 ```
 
-Pada baris kode di atas, kita menggunakan `rotate` yang dihasilkan dari *hook* `useTransform` milik framer motion.
+Pada baris kode di atas, kita menggunakan `rotate` yang dihasilkan dari _hook_ `useTransform` milik framer motion.
 
 ## Demo
 
-<div style="position: relative; padding-bottom: 74.3801652892562%; height: 0;"><iframe src="https://www.loom.com/embed/5d9faea27d5c4701b4962eb982152926?sid=a9d71c9d-3712-4eef-927c-3a12f556856a" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+[Loom](https://www.loom.com/share/5d9faea27d5c4701b4962eb982152926?sid=eb1e13c4-fe46-4f2e-800c-e9b65a50fade)
 
-## *Summary*
+## _Summary_
 
-Di tulisan ini, kita sudah belajar tentang konsep *finite state machine* dan implementasinya menggunakan XState di Next.js.
+Di tulisan ini, kita sudah belajar tentang konsep _finite state machine_ dan implementasinya menggunakan XState di Next.js.
 
-Saya sendiri yakin bahwa XState adalah salah satu *library* yang bermanfaat dalam situasi yang kompleks.
+Saya sendiri yakin bahwa XState adalah salah satu _library_ yang bermanfaat dalam situasi yang kompleks.
 
 Terima kasih sudah membaca!
