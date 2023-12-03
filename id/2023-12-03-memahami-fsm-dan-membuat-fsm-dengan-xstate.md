@@ -5,7 +5,7 @@ Di tulisan ini, saya ingin berbagi tentang _finite state machine_ dan bagaimana 
 
 ## Menyiapkan project
 
-Saya menggunakan Next.js 13 dengan app _directory_ dan TailwindCSS. Libraries yang perlu di-_install_. Tutorial membuat project Next.js dengan _app router_ dapat ditemukan [di link ini](https://nextjs.org/docs/getting-started/installation).
+Saya menggunakan Next.js 13 dengan app _directory_ dan TailwindCSS. Tutorial membuat project Next.js dengan _app router_ dapat ditemukan [di link ini](https://nextjs.org/docs/getting-started/installation).
 
 ```
 What is your project named? logs-understanding-fsm-with-xstate
